@@ -1,9 +1,40 @@
+body {
+  background-color: #121212;
+}
+
+.search-bar {
+  background-color: #272727 !important;
+}
+
+.field label {
+  color: #fff !important;
+}
+
 .video-item {
   display: flex !important;
   align-items: center !important;
   cursor: pointer;
+  justify-content: flex-start !important;
 }
 
 .video-item.item img {
-  max-width: 180px;
+  width: 250px;
+}
+
+.video-item .content {
+  flex-basis: 100% !important;
+}
+
+.video-item .content .header {
+  color: rgb(230, 228, 228) !important;
+}
+
+.segment {
+  margin-bottom: 20px !important;
+  background-color: #272727 !important;
+  color: rgb(230, 228, 228) !important;
+}
+
+.segment .header {
+  color: rgb(230, 228, 228) !important;
 }

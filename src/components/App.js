@@ -9,6 +9,16 @@ class App extends React.Component {
 
   componentDidMount() {
     this.onTermSubmit('cats');
+
+    window.addEventListener(
+      'resize',
+      () => {
+        this.setState({
+          isMobile: window.innerWidth < 1000,
+        });
+      },
+      false,
+    );
   }
 
   onTermSubmit = async term => {
@@ -30,11 +40,12 @@ class App extends React.Component {
   };
 
   render() {
+    const className = this.state.isMobile ? '' : 'ui row';
     return (
       <div className="ui container">
         <SearchBar onFormSubmit={this.onTermSubmit} />
         <div className="ui grid">
-          <div className="ui row">
+          <div className={className}>
             <div className="eleven wide column">
               <VideoDetail video={this.state.selectedVideo} />
             </div>
