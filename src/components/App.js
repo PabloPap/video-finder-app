@@ -7,19 +7,12 @@ import VideoDetail from './VideoDetail';
 class App extends React.Component {
   state = {videos: [], selectedVideo: null};
 
-  onSizeChange = () => {
+  componentDidMount() {
+    this.onTermSubmit('cats');
+
     this.setState({
       isMobile: window.innerWidth > 1000,
     });
-  };
-
-  componentDidMount() {
-    this.onTermSubmit('cats');
-    window.addEventListener('resize', this.onSizeChange, false);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.onSizeChange, false);
   }
 
   onTermSubmit = async term => {
