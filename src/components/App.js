@@ -7,18 +7,19 @@ import VideoDetail from './VideoDetail';
 class App extends React.Component {
   state = {videos: [], selectedVideo: null};
 
+  onSizeChange = () => {
+    this.setState({
+      isMobile: window.innerWidth > 1000,
+    });
+  };
+
   componentDidMount() {
     this.onTermSubmit('cats');
+    window.addEventListener('resize', this.onSizeChange, false);
+  }
 
-    window.addEventListener(
-      'resize',
-      () => {
-        this.setState({
-          isMobile: window.innerWidth < 1000,
-        });
-      },
-      false,
-    );
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onSizeChange, false);
   }
 
   onTermSubmit = async term => {
@@ -40,7 +41,7 @@ class App extends React.Component {
   };
 
   render() {
-    const className = this.state.isMobile ? '' : 'ui row';
+    const className = this.state.isMobile ? 'ui row' : '';
     return (
       <div className="ui container">
         <SearchBar onFormSubmit={this.onTermSubmit} />
